@@ -17,7 +17,7 @@ class LoginVC: UIViewController {
         let label = UILabel()
         view.addSubview(label)
         
-        label.text = "Login Screen Added"
+        label.text = "Login Screen"
         label.backgroundColor = .yellow
         
         label.translatesAutoresizingMaskIntoConstraints = false
