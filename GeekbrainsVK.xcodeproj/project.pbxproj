@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		675279BC25795904003BF304 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675279BB25795904003BF304 /* UIButtonExtensions.swift */; };
 		67AC96CE2578110D002F5F8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AC96CD2578110D002F5F8C /* AppDelegate.swift */; };
 		67AC96D02578110D002F5F8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AC96CF2578110D002F5F8C /* SceneDelegate.swift */; };
 		67AC96D72578110F002F5F8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AC96D62578110F002F5F8C /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		675279BB25795904003BF304 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		67AC96CA2578110D002F5F8C /* GeekbrainsVK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeekbrainsVK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AC96CD2578110D002F5F8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67AC96CF2578110D002F5F8C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +37,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		675279B9257958EA003BF304 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				675279BA257958F4003BF304 /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		675279BA257958F4003BF304 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				675279BB25795904003BF304 /* UIButtonExtensions.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		67AC96C12578110D002F5F8C = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +72,7 @@
 		67AC96CC2578110D002F5F8C /* GeekbrainsVK */ = {
 			isa = PBXGroup;
 			children = (
+				675279B9257958EA003BF304 /* Extensions */,
 				67AC96E32578113E002F5F8C /* Login */,
 				67AC96E225781125002F5F8C /* App Entry */,
 				67AC96D62578110F002F5F8C /* Assets.xcassets */,
@@ -150,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67AC96CE2578110D002F5F8C /* AppDelegate.swift in Sources */,
+				675279BC25795904003BF304 /* UIButtonExtensions.swift in Sources */,
 				67AC96D02578110D002F5F8C /* SceneDelegate.swift in Sources */,
 				67AC96E825781360002F5F8C /* LoginVC.swift in Sources */,
 			);
