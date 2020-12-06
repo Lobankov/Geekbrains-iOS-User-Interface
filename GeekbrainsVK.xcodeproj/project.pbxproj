@@ -13,6 +13,7 @@
 		67AC96D72578110F002F5F8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67AC96D62578110F002F5F8C /* Assets.xcassets */; };
 		67AC96DA2578110F002F5F8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67AC96D82578110F002F5F8C /* LaunchScreen.storyboard */; };
 		67AC96E825781360002F5F8C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AC96E725781360002F5F8C /* LoginVC.swift */; };
+		67F92EFC257D9AD200CF87DD /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F92EFB257D9AD200CF87DD /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		67AC96D92578110F002F5F8C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67AC96DB2578110F002F5F8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67AC96E725781360002F5F8C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		67F92EFB257D9AD200CF87DD /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		67AC96CC2578110D002F5F8C /* GeekbrainsVK */ = {
 			isa = PBXGroup;
 			children = (
+				67F92EFA257D9AC800CF87DD /* Helpers */,
 				675279B9257958EA003BF304 /* Extensions */,
 				67AC96E32578113E002F5F8C /* Login */,
 				67AC96E225781125002F5F8C /* App Entry */,
@@ -97,6 +100,14 @@
 				67AC96E725781360002F5F8C /* LoginVC.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		67F92EFA257D9AC800CF87DD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				67F92EFB257D9AD200CF87DD /* Colors.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67AC96CE2578110D002F5F8C /* AppDelegate.swift in Sources */,
+				67F92EFC257D9AD200CF87DD /* Colors.swift in Sources */,
 				675279BC25795904003BF304 /* UIButtonExtensions.swift in Sources */,
 				67AC96D02578110D002F5F8C /* SceneDelegate.swift in Sources */,
 				67AC96E825781360002F5F8C /* LoginVC.swift in Sources */,
