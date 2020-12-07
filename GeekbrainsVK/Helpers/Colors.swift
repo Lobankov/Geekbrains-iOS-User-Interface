@@ -16,4 +16,6 @@ enum AppColors {
     static let placeholder = UIColor(white: 0.6, alpha: 1)
     
     static let blue        = UIColor(red: 76/255, green: 117/255, blue: 163/255, alpha: 1)
+    
+    static let darkRed     = UIColor(red: 180/255, green: 30/255, blue: 30/255, alpha: 1)
 }

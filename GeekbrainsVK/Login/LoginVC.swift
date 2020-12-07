@@ -17,6 +17,7 @@ class LoginVC: UIViewController {
     
     private var formStackView: UIStackView!
     private var inputsStackView: UIStackView!
+    private var wrongLoginLabel: UILabel!
     private var loginInput: UITextField!
     private var passwordInput: UITextField!
     private var showPasswordButton: UIButton!
@@ -29,6 +30,8 @@ class LoginVC: UIViewController {
     /// - Remark: We will tweak it's constant value in order to animate Y-axis of formStackView
     private var formStackViewCenterYConstraint: NSLayoutConstraint!
     
+    private var wrongLoginBottomConstraint: NSLayoutConstraint!
+    
     
     // MARK: Lifecycle
     
@@ -38,11 +41,13 @@ class LoginVC: UIViewController {
         
         formStackView = UIStackView()
         inputsStackView = UIStackView()
+        wrongLoginLabel = UILabel()
         loginInput = UITextField()
         passwordInput = UITextField()
         loginButton = UIButton()
         
         view.addSubview(formStackView)
+        view.addSubview(wrongLoginLabel)
         
         formStackView.addArrangedSubview(inputsStackView)
         
@@ -58,6 +63,7 @@ class LoginVC: UIViewController {
         formStackView.addArrangedSubview(loginButton)
         
         setupFormStackView()
+        setupWrongLoginLabel()
         setupInputsStackView()
         setupLoginInput()
         setupPasswordInput()
@@ -95,7 +101,7 @@ class LoginVC: UIViewController {
         if login.isValidEmail() || login.isValidPhoneNumber() {
             print("Successfully login")
         } else {
-            print("Wrong login format")
+            showWrongLoginLabel()
         }
     }
     
@@ -117,6 +123,25 @@ class LoginVC: UIViewController {
         
         passwordInput.isSecureTextEntry.toggle()
         
+    }
+    
+    private func showWrongLoginLabel() {
+        
+        wrongLoginBottomConstraint.constant = -10
+        
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
+        
+    }
+    
+    private func hideWrongLoginLabel() {
+        
+        wrongLoginBottomConstraint.constant = 16
+        
+        UIView.animate(withDuration: 0.2) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
     }
     
     // MARK: Keyboard Event Handlers
@@ -205,6 +230,7 @@ class LoginVC: UIViewController {
         
         formStackView.translatesAutoresizingMaskIntoConstraints = false
         
+        formStackView.layer.zPosition = 1
         formStackView.axis = .vertical
         formStackView.spacing = 5
         formStackView.distribution = .fill
@@ -237,6 +263,25 @@ class LoginVC: UIViewController {
         
     }
     
+    private func setupWrongLoginLabel() {
+        
+        wrongLoginLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        wrongLoginLabel.font = .italicSystemFont(ofSize: 15)
+        wrongLoginLabel.textColor = AppColors.darkRed
+        wrongLoginLabel.text = "Неверный логин или пароль"
+        
+        let labelHeight: CGFloat = 16
+        
+        wrongLoginBottomConstraint = wrongLoginLabel.bottomAnchor.constraint(equalTo: formStackView.topAnchor, constant: labelHeight)
+        
+        NSLayoutConstraint.activate([
+            wrongLoginBottomConstraint,
+            wrongLoginLabel.leadingAnchor.constraint(equalTo: formStackView.leadingAnchor, constant: 15),
+            wrongLoginLabel.heightAnchor.constraint(equalToConstant: labelHeight)
+        ])
+    }
+    
     private func setupInputsStackView() {
         
         inputsStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -254,22 +299,17 @@ class LoginVC: UIViewController {
     
     private func setupLoginInput() {
         
+        loginInput.delegate = self
         loginInput.autocapitalizationType = .none
-        loginInput.font = .systemFont(ofSize: 17)
+        loginInput.font = .systemFont(ofSize: 16)
         loginInput.textColor = .black
         loginInput.backgroundColor = AppColors.lightGray
         loginInput.attributedPlaceholder = NSAttributedString(string: "Email или телефон", attributes: [NSAttributedString.Key.foregroundColor: AppColors.placeholder])
         
-        let userIconView = UIImageView(image: UIImage(systemName: "person"))
-        userIconView.contentMode = .scaleAspectFit
-        userIconView.tintColor = AppColors.placeholder
-        userIconView.translatesAutoresizingMaskIntoConstraints = false
-        userIconView.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        
-        loginInput.leftView = userIconView
+        loginInput.leftView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 15, height: 40)))
         loginInput.leftViewMode = .always
         
-        loginInput.rightView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 20, height: 40)))
+        loginInput.rightView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 15, height: 40)))
         loginInput.rightViewMode = .always
         
         loginInput.translatesAutoresizingMaskIntoConstraints = false
@@ -277,28 +317,24 @@ class LoginVC: UIViewController {
     }
     
     private func setupPasswordInput() {
-        
+
+        passwordInput.delegate = self
         passwordInput.isSecureTextEntry = true
         passwordInput.autocapitalizationType = .none
-        passwordInput.font = .systemFont(ofSize: 17)
+        passwordInput.font = .systemFont(ofSize: 16)
         passwordInput.textColor = .black
         passwordInput.backgroundColor = AppColors.lightGray
         passwordInput.attributedPlaceholder = NSAttributedString(string: "Пароль", attributes: [NSAttributedString.Key.foregroundColor: AppColors.placeholder])
         
-        let lockIconView = UIImageView(image: UIImage(systemName: "lock"))
-        lockIconView.contentMode = .scaleAspectFit
-        lockIconView.tintColor = AppColors.placeholder
-        lockIconView.translatesAutoresizingMaskIntoConstraints = false
-        lockIconView.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        
-        passwordInput.leftView = lockIconView
+        passwordInput.leftView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 15, height: 40)))
         passwordInput.leftViewMode = .always
         
-        showPasswordButton = UIButton()
-        showPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        showPasswordButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        showPasswordButton = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 40, height: 40)))
         showPasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        showPasswordButton.imageView?.contentMode = .scaleAspectFit
         showPasswordButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
+        showPasswordButton.contentHorizontalAlignment = .right
+        showPasswordButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
         showPasswordButton.tintColor = AppColors.placeholder
         showPasswordButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
         
@@ -328,4 +364,12 @@ class LoginVC: UIViewController {
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
+}
+
+extension LoginVC: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        hideWrongLoginLabel()
+    }
+    
 }
