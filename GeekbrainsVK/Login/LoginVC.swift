@@ -19,6 +19,7 @@ class LoginVC: UIViewController {
     private var inputsStackView: UIStackView!
     private var loginInput: UITextField!
     private var passwordInput: UITextField!
+    private var showPasswordButton: UIButton!
     private var loginButton: UIButton!
     
     // MARK: Constraints
@@ -87,12 +88,35 @@ class LoginVC: UIViewController {
     
     @objc private func handleLoginButtonTap() {
         
+        guard let login = loginInput.text, passwordInput.text?.isEmpty == false else {
+            return
+        }
+        
+        if login.isValidEmail() || login.isValidPhoneNumber() {
+            print("Successfully login")
+        } else {
+            print("Wrong login format")
+        }
     }
     
     // MARK: Helper functions
     
     @objc private func hideKeyboard() {
         view.endEditing(true)
+    }
+    
+    @objc private func togglePasswordVisibility() {
+        
+        let passwordWasHidden = passwordInput.isSecureTextEntry
+        
+        if passwordWasHidden {
+            showPasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
+        } else {
+            showPasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        }
+        
+        passwordInput.isSecureTextEntry.toggle()
+        
     }
     
     // MARK: Keyboard Event Handlers
@@ -270,8 +294,16 @@ class LoginVC: UIViewController {
         passwordInput.leftView = lockIconView
         passwordInput.leftViewMode = .always
         
-        passwordInput.rightView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: 20, height: 40)))
-        passwordInput.rightViewMode = .always
+        showPasswordButton = UIButton()
+        showPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        showPasswordButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        showPasswordButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        showPasswordButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
+        showPasswordButton.tintColor = AppColors.placeholder
+        showPasswordButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
+        
+        passwordInput.rightView = showPasswordButton
+        passwordInput.rightViewMode = .whileEditing
         
         passwordInput.translatesAutoresizingMaskIntoConstraints = false
         passwordInput.heightAnchor.constraint(equalToConstant: 40).isActive = true
