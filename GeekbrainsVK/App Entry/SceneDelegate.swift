@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         let loginVC = LoginVC()
-        
+            
         window.rootViewController = loginVC
         self.window = window
         window.makeKeyAndVisible()
@@ -54,7 +54,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
+    
+    // MARK: Helpers
+    
+    func changeRoot(viewController: UIViewController) {
+        
+        guard let window = self.window else {
+            return
+        }
+        
+        window.rootViewController = viewController
+        
+        UIView.transition(with: window, duration: 0.3, options: [.transitionFlipFromLeft], animations: nil, completion: nil)
+    }
 
 }
 
