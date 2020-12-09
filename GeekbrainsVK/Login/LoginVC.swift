@@ -99,7 +99,7 @@ class LoginVC: UIViewController {
         }
         
         if login.isValidEmail() || login.isValidPhoneNumber() {
-            print("Successfully login")
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRoot(viewController: HomeTabBarVC())
         } else {
             showWrongLoginLabel()
         }
@@ -299,6 +299,9 @@ class LoginVC: UIViewController {
     
     private func setupLoginInput() {
         
+        // predefined dummy data
+        loginInput.text = "alesha@geekbrains.ru"
+        
         loginInput.delegate = self
         loginInput.autocapitalizationType = .none
         loginInput.font = .systemFont(ofSize: 16)
@@ -317,6 +320,9 @@ class LoginVC: UIViewController {
     }
     
     private func setupPasswordInput() {
+        
+        // predefined dummy data
+        passwordInput.text = "SuperSequrePassword1337"
 
         passwordInput.delegate = self
         passwordInput.isSecureTextEntry = true
