@@ -100,11 +100,11 @@ class FriendsTableVC: UITableViewController {
     
     private func makeDummyFriendsList() -> [UserModel] {
         
-        let boris = UserModel(firstName: "Борис", lastName: "Семенов", avatarPath: "boris")
-        let anton = UserModel(firstName: "Антон", lastName: "Григорьев", avatarPath: "anton")
-        let ekaterina = UserModel(firstName: "Екатерина", lastName: "Пархоменко", avatarPath: "ekaterina")
-        let semen = UserModel(firstName: "Семен", lastName: "Вишневский", avatarPath: "semen")
-        let natalia = UserModel(firstName: "Наталья", lastName: "Комкова", avatarPath: "natalia")
+        let boris = UserModel(firstName: "Борис", lastName: "Семенов", avatarPath: "boris", photosPaths: ["boris1", "boris2", "boris3", "boris4", "boris5"])
+        let anton = UserModel(firstName: "Антон", lastName: "Григорьев", avatarPath: "anton", photosPaths: ["anton1", "anton2", "anton3", "anton4"])
+        let ekaterina = UserModel(firstName: "Екатерина", lastName: "Пархоменко", avatarPath: "ekaterina", photosPaths: ["ekaterina1", "ekaterina2", "ekaterina3", "ekaterina4"])
+        let semen = UserModel(firstName: "Семен", lastName: "Вишневский", avatarPath: "semen", photosPaths: ["semen1", "semen2", "semen3"])
+        let natalia = UserModel(firstName: "Наталья", lastName: "Комкова", avatarPath: "natalia", photosPaths: ["natalia1", "natalia2", "natalia3", "natalia4", "natalia5", "natalia6"])
         
         return [boris, anton, ekaterina, semen, natalia]
     }

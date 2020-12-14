@@ -7,11 +7,7 @@
 
 import UIKit
 
-class UserTableViewCell: UITableViewCell {
-    
-    // MARK: Internal Static Properties
-    
-    static let reuseIdentifier = "userTableCellID"
+class UserTableViewCell: UITableViewCell, Reusable {
 
     // MARK: UI Components
     private var avatar: UIImageView!

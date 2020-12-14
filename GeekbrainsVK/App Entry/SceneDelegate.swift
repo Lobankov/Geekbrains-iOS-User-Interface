@@ -18,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         
+        configureDefaultAppearance()
+        
         let window = UIWindow(windowScene: windowScene)
         
         let loginVC = LoginVC()
@@ -66,6 +68,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = viewController
         
         UIView.transition(with: window, duration: 0.3, options: [.transitionFlipFromLeft], animations: nil, completion: nil)
+    }
+    
+    private func configureDefaultAppearance() {
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        UINavigationBar.appearance().tintColor = AppColors.darkBlue
     }
 
 }

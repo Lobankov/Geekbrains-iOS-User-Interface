@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GroupModel {
+struct GroupModel: Equatable, Hashable {
     
     let name: String
     let imagePath: String

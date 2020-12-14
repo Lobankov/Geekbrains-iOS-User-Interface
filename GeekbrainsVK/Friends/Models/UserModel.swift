@@ -12,5 +12,5 @@ struct UserModel {
     let firstName : String
     let lastName : String
     let avatarPath: String
-    
+    let photosPaths: [String]
 }

@@ -7,6 +7,8 @@
 
 import UIKit
 
+/// A `UIViewController` that manages user groups screen
+/// - Tag: UserGroupsTableVC
 class UserGroupsTableVC: UITableViewController {
     
     // MARK: Private Fields
@@ -111,6 +113,23 @@ class UserGroupsTableVC: UITableViewController {
     @objc private func handleAllGroupsButtonTap() {
      
         let allGroupsVC = GroupsTableVC()
+        allGroupsVC.delegate = self
+        allGroupsVC.subscribedGroups = Set<GroupModel>(userGroups)
         self.navigationController?.pushViewController(allGroupsVC, animated: true)
     }
 }
+
+extension UserGroupsTableVC: GroupsTableVCDelegate {
+    
+    func subscribed(to group: GroupModel) {
+        userGroups.append(group)
+        tableView.reloadData()
+    }
+    
+    func unsubscribed(from group: GroupModel) {
+        userGroups.removeAll(where: { $0 == group })
+        tableView.reloadData()
+    }
+    
+}
+

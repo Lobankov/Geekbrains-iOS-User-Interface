@@ -7,21 +7,28 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
 class UserPhotosCollectionVC: UICollectionViewController {
     
     // MARK: Private Fields
     private var user: UserModel?
     
+    // MARK: UI Sizes
+    
+    private let spacing: CGFloat = 5
+    
     // MARK: Initialization
     
-    convenience init(user: UserModel) {        
-        self.init(collectionViewLayout: UICollectionViewFlowLayout())
+    convenience init(user: UserModel) {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        self.init(collectionViewLayout: layout)
         
         self.user = user
         self.title = "\(user.firstName) - Фото"
         self.collectionView.backgroundColor = .white
+        collectionView.alwaysBounceVertical = true
     }
     
     // MARK: Lifecycle
@@ -33,32 +40,21 @@ class UserPhotosCollectionVC: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(UserPhotoCollectionViewCell.self, forCellWithReuseIdentifier: UserPhotoCollectionViewCell.reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        
-        return 3
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return 3
+        return user?.photosPaths.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserPhotoCollectionViewCell.reuseIdentifier, for: indexPath) as! UserPhotoCollectionViewCell
     
-        let imageView = UIImageView(image: UIImage(named: "deb"))
-        
-        imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-    
-        cell.contentView.addSubview(imageView)
+        cell.setData(UIImage(named: (user?.photosPaths[indexPath.item]) ?? "deb"))
         
         return cell
     }
@@ -99,7 +95,14 @@ class UserPhotosCollectionVC: UICollectionViewController {
 extension UserPhotosCollectionVC : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: collectionView.frame.width / 2 - spacing / 2, height: collectionView.frame.width / 2 - spacing / 2)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return spacing
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return spacing
+    }
 }

@@ -11,11 +11,15 @@ enum AppColors {
     
     static let lightGray   = UIColor(white: 0.95, alpha: 1)
     
+    static let gray        = UIColor(white: 0.7, alpha: 1)
+    
     static let border      = UIColor(white: 0.85, alpha: 1)
     
     static let placeholder = UIColor(white: 0.6, alpha: 1)
     
     static let blue        = UIColor(red: 76/255, green: 117/255, blue: 163/255, alpha: 1)
+    
+    static let darkBlue    = UIColor(red: 26/255, green: 75/255, blue: 120/255, alpha: 1)
     
     static let darkRed     = UIColor(red: 180/255, green: 30/255, blue: 30/255, alpha: 1)
 }

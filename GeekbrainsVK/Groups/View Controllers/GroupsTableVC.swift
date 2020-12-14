@@ -7,24 +7,31 @@
 
 import UIKit
 
+/// A `UIViewController` that manages all groups screen
+/// - Tag: GroupsTableVC
 class GroupsTableVC: UITableViewController {
     
     // MARK: Private Fields
+    private var allGroups: [GroupModel] = []
     
-    private var groups: [GroupModel] = []
+    // MARK: Internal Properties
+    weak var delegate: GroupsTableVCDelegate?    
+    var subscribedGroups: Set<GroupModel> = []
     
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        groups = GroupFactory.makeDummyGroups()
+        allGroups = GroupFactory.makeDummyGroups()
         self.title = "Все сообщества"        
         
         tableView.register(GroupTableViewCell.self, forCellReuseIdentifier: GroupTableViewCell.reuseIdentifier)
         
         // this line of code will remove all "extra" blank rows
         tableView.tableFooterView = UIView()
+        
+        tableView.allowsMultipleSelection = true
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -41,20 +48,40 @@ class GroupsTableVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return groups.count
+        return allGroups.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GroupTableViewCell.reuseIdentifier, for: indexPath) as! GroupTableViewCell
+        cell.isUserInteractionEnabled = true
 
-        cell.setData(groups[indexPath.row])
+        let group = allGroups[indexPath.row]
+        
+        cell.setData(group, showSubscriptionIcon: true)
+        
+        subscribedGroups.contains(group) ? cell.updateSubscribed() : cell.updateUnsubscribed()
 
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let groupToSelect = allGroups[indexPath.row]
+        let cell = tableView.cellForRow(at: indexPath) as? GroupTableViewCell
+        
+        if subscribedGroups.contains(groupToSelect) {
+            subscribedGroups.remove(groupToSelect)
+            delegate?.unsubscribed(from: groupToSelect)
+            cell?.updateUnsubscribed()
+        } else {
+            subscribedGroups.insert(groupToSelect)
+            delegate?.subscribed(to: groupToSelect)
+            cell?.updateSubscribed()
+        }
     }
 
     /*
@@ -92,4 +119,15 @@ class GroupsTableVC: UITableViewController {
     }
     */
 
+}
+
+// MARK: Delegate Protocol
+
+/// A delegate protocol that's function is to connect [all groups VC](x-source-tag://GroupsTableVC) and his *parent* [user groups VC](x-source-tag://UserGroupsTableVC)
+protocol GroupsTableVCDelegate: UITableViewController {
+    
+    func subscribed(to group: GroupModel)
+    
+    func unsubscribed(from group: GroupModel)
+    
 }
