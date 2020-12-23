@@ -13,6 +13,7 @@
 		6703BC04258156EC00440132 /* GroupsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6703BC03258156EC00440132 /* GroupsTableVC.swift */; };
 		6703BC082581572600440132 /* UserGroupsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6703BC072581572600440132 /* UserGroupsTableVC.swift */; };
 		6703BC0E258161A000440132 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6703BC0D258161A000440132 /* UserModel.swift */; };
+		6717D5092592FB2B00C6137A /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6717D5082592FB2B00C6137A /* AvatarView.swift */; };
 		675279BC25795904003BF304 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675279BB25795904003BF304 /* UIButtonExtensions.swift */; };
 		675DD1902581703E006C554F /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675DD18F2581703E006C554F /* GroupModel.swift */; };
 		675DD196258172C7006C554F /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675DD195258172C7006C554F /* GroupTableViewCell.swift */; };
@@ -37,6 +38,7 @@
 		6703BC03258156EC00440132 /* GroupsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableVC.swift; sourceTree = "<group>"; };
 		6703BC072581572600440132 /* UserGroupsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGroupsTableVC.swift; sourceTree = "<group>"; };
 		6703BC0D258161A000440132 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		6717D5082592FB2B00C6137A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		675279BB25795904003BF304 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		675DD18F2581703E006C554F /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		675DD195258172C7006C554F /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
@@ -130,6 +132,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		6717D5072592FB0F00C6137A /* Core Views */ = {
+			isa = PBXGroup;
+			children = (
+				6717D5082592FB2B00C6137A /* AvatarView.swift */,
+			);
+			path = "Core Views";
+			sourceTree = "<group>";
+		};
 		675279B9257958EA003BF304 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +194,7 @@
 		67AC96CC2578110D002F5F8C /* GeekbrainsVK */ = {
 			isa = PBXGroup;
 			children = (
+				6717D5072592FB0F00C6137A /* Core Views */,
 				6703BBFA2581564800440132 /* Groups */,
 				6703BBF92581564100440132 /* Friends */,
 				67F92EFA257D9AC800CF87DD /* Helpers */,
@@ -314,6 +325,7 @@
 				67E820122587F5D60067299C /* UIViewExtensions.swift in Sources */,
 				675279BC25795904003BF304 /* UIButtonExtensions.swift in Sources */,
 				675DD196258172C7006C554F /* GroupTableViewCell.swift in Sources */,
+				6717D5092592FB2B00C6137A /* AvatarView.swift in Sources */,
 				67AC96D02578110D002F5F8C /* SceneDelegate.swift in Sources */,
 				67E8200B2587F4B70067299C /* UserPhotoCollectionViewCell.swift in Sources */,
 				6703BC01258156B000440132 /* UserPhotosCollectionVC.swift in Sources */,

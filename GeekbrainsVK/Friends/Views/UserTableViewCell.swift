@@ -10,7 +10,7 @@ import UIKit
 class UserTableViewCell: UITableViewCell, Reusable {
 
     // MARK: UI Components
-    private var avatar: UIImageView!
+    private var avatar: AvatarView!
     private var nameLabel: UILabel!
     
     // MARK: UI Sizes
@@ -22,7 +22,7 @@ class UserTableViewCell: UITableViewCell, Reusable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
      
-        self.avatar = UIImageView()
+        self.avatar = AvatarView()
         self.nameLabel = UILabel()
         
         contentView.addSubview(avatar)
@@ -42,6 +42,12 @@ class UserTableViewCell: UITableViewCell, Reusable {
         
         avatar.image = UIImage(named: user.avatarPath)
         nameLabel.text = user.firstName + " " + user.lastName
+        
+        // uncomment to see the property works
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+//            self?.avatar.shadowColor = .red
+//        }
     }
     
     // MARK: Layout
@@ -50,17 +56,12 @@ class UserTableViewCell: UITableViewCell, Reusable {
         
         avatar.translatesAutoresizingMaskIntoConstraints = false
         
-        avatar.contentMode = .scaleToFill
-        
         NSLayoutConstraint.activate([
             avatar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             avatar.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             avatar.widthAnchor.constraint(equalToConstant: avatarWidth),
             avatar.heightAnchor.constraint(equalTo: avatar.widthAnchor)
         ])
-        
-        avatar.layer.cornerRadius = avatarWidth / 2
-        avatar.layer.masksToBounds = true
     }
     
     private func setupNameLabel() {
