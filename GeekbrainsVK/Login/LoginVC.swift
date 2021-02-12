@@ -260,7 +260,6 @@ class LoginVC: UIViewController {
             formStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             formStackViewCenterYConstraint
         ])
-        
     }
     
     private func setupWrongLoginLabel() {
