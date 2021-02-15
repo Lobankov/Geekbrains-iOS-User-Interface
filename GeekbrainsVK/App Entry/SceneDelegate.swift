@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        let loginVC = LoginVC()
+//        let loginVC = LoginVC()
+        let loginVC = LoginWebViewVC()
             
         window.rootViewController = loginVC
         self.window = window

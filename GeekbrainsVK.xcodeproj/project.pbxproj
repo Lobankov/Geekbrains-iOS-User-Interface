@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,6 +21,8 @@
 		675DD1902581703E006C554F /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675DD18F2581703E006C554F /* GroupModel.swift */; };
 		675DD196258172C7006C554F /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675DD195258172C7006C554F /* GroupTableViewCell.swift */; };
 		675DD1992581740F006C554F /* GroupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675DD1982581740F006C554F /* GroupFactory.swift */; };
+		678FF5A325DAF30E00ED7B23 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678FF5A225DAF30E00ED7B23 /* NetworkManager.swift */; };
+		678FF5A625DAF45F00ED7B23 /* VKConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678FF5A525DAF45F00ED7B23 /* VKConstants.swift */; };
 		67A4A22325D6C97B00C60744 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67A4A22225D6C97B00C60744 /* Session.swift */; };
 		67AC96CE2578110D002F5F8C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AC96CD2578110D002F5F8C /* AppDelegate.swift */; };
 		67AC96D02578110D002F5F8C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AC96CF2578110D002F5F8C /* SceneDelegate.swift */; };
@@ -50,6 +52,8 @@
 		675DD18F2581703E006C554F /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		675DD195258172C7006C554F /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		675DD1982581740F006C554F /* GroupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFactory.swift; sourceTree = "<group>"; };
+		678FF5A225DAF30E00ED7B23 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		678FF5A525DAF45F00ED7B23 /* VKConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKConstants.swift; sourceTree = "<group>"; };
 		67A4A22225D6C97B00C60744 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		67AC96CA2578110D002F5F8C /* GeekbrainsVK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeekbrainsVK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AC96CD2578110D002F5F8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,7 +90,6 @@
 				95EC37F187E111B2CD8B0498 /* Pods-GeekbrainsVK.debug.xcconfig */,
 				129B87509FB227E0A2D2D173 /* Pods-GeekbrainsVK.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -209,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				67A4A22225D6C97B00C60744 /* Session.swift */,
+				678FF5A225DAF30E00ED7B23 /* NetworkManager.swift */,
 			);
 			path = "Services and Managers";
 			sourceTree = "<group>";
@@ -264,6 +268,7 @@
 			children = (
 				67AC96E725781360002F5F8C /* LoginVC.swift */,
 				674BD70525DAEC40003C6D1D /* LoginWebViewVC.swift */,
+				678FF5A525DAF45F00ED7B23 /* VKConstants.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -401,6 +406,7 @@
 				67F92F01257DA86A00CF87DD /* StringExtensions.swift in Sources */,
 				675DD1902581703E006C554F /* GroupModel.swift in Sources */,
 				675DD1992581740F006C554F /* GroupFactory.swift in Sources */,
+				678FF5A625DAF45F00ED7B23 /* VKConstants.swift in Sources */,
 				6703BC082581572600440132 /* UserGroupsTableVC.swift in Sources */,
 				67E820082587F3F00067299C /* UserTableViewCell.swift in Sources */,
 				6703BBF62581551E00440132 /* HomeTabBarVC.swift in Sources */,
@@ -410,6 +416,7 @@
 				67E8200E2587F4D50067299C /* Reusable.swift in Sources */,
 				67F92EFC257D9AD200CF87DD /* Colors.swift in Sources */,
 				67E820122587F5D60067299C /* UIViewExtensions.swift in Sources */,
+				678FF5A325DAF30E00ED7B23 /* NetworkManager.swift in Sources */,
 				675279BC25795904003BF304 /* UIButtonExtensions.swift in Sources */,
 				675DD196258172C7006C554F /* GroupTableViewCell.swift in Sources */,
 				6717D5092592FB2B00C6137A /* AvatarView.swift in Sources */,
