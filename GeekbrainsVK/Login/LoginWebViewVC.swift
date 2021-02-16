@@ -37,12 +37,6 @@ final class LoginWebViewVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        requestAuthorization()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
         requestAuthorization()
     }
     
@@ -113,8 +107,8 @@ extension LoginWebViewVC: WKNavigationDelegate {
         Session.shared.token = token
         Session.shared.userId = userId
         
-//        NetworkManager.shared.getGroups(count: 5, userID: Session.shared.userId)
-        NetworkManager.shared.getFriends(count: 10)
+        // kinda successful login, so change the root vc
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRoot(viewController: HomeTabBarVC())
         
         decisionHandler(.cancel)
     }

@@ -9,11 +9,7 @@ import UIKit
 
 class HomeTabBarVC: UITabBarController {
     
-    // MARK: Private Fields
-    
-    // MARK: UI Components
-    
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()        
@@ -23,7 +19,16 @@ class HomeTabBarVC: UITabBarController {
         viewControllers = [makeFriendsViewControllers(), makeGroupsViewControllers()]
     }
     
-    // MARK: Factory Methods
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        NetworkManager.shared.getFriends(count: 10)
+        NetworkManager.shared.getPhotos()
+        NetworkManager.shared.getGroups(count: 5, userID: Session.shared.userId)
+        NetworkManager.shared.searchGroups(with: "Картошка")
+    }
+    
+    // MARK: - Factory Methods
     
     private func makeFriendsViewControllers() -> UIViewController {
         
